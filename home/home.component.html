@@ -1,0 +1,99 @@
+<div class="container-fluid">
+    <app-header></app-header><br><br>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+            <div>
+                <button (click)="onClickAdd()" class="btn btn-success">ADD EMPLOYEE</button>
+                <button (click)="onClickUpdate(popUp)" class="btn btn-warning">UPDATE</button>
+                <button (click)="onClickStatus()" class="btn btn-info">Change Status</button>
+                <button (click)="onClickDelete()" class="btn btn-danger">DELETE</button>
+            </div>
+            <br>
+            <div class="d-flex justify-content-center">
+                <div class="form-group" style="margin-bottom: 0px;margin-top: 10px;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-primary text-white" style="font-size: 1em; ">
+                            <i class="fa fa-search"></i></span>
+                        <input type="text" class="form-control bg-light border border-primary" placeholder="Search"
+                            style="min-width: 500px;max-width: fit-content;" [(ngModel)]="nameSearch">
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #popUp class="d-flex justify-content-center">
+                <app-update-employee [empObject]="employee"></app-update-employee>
+                <div class="d-flex justify-content-center">
+                    <a (click)="closePopup()" class="btn btn-danger btn-md text-white"
+                        style="width: 100%; margin-top:0px; margin-left: 15px;margin-right: 15px; margin-bottom: 15px;">Close</a>
+
+                </div>
+            </ng-template>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="row" style="margin-top: 5px;">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="table-responsivetable-wrapper-scroll-y my-custom-scrollbar ">
+                <table class="table table-bordered table-hover ">
+                    <thead class="thead-dark">
+                        <th></th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email Id</th>
+                        <!-- <th>Email Id</th> -->
+                        <th>Department</th>
+                        <th>Status</th>
+                        <!-- <th>Created On</th> -->
+                        <th>Created by</th>
+                        <!-- <th>Updated on</th> -->
+                        <th>Updated by</th>
+                        <th>Country</th>
+                        <!-- <th></th> -->
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let employee of empArr| filter:nameSearch">
+                            <td>
+                                <input name="action" type="radio" (click)="selectEmp(employee)">
+                            </td>
+                            <td>{{employee.id}}</td>
+                            <td class="text-info">
+                                <a [routerLink]="['/employeedetails',employee.id]">{{employee.name| uppercase}}</a>
+                            </td>
+                            <td>{{employee.email}}</td>
+                            <!-- <td>{{employee.phoneno}}</td> -->
+                            <td>{{employee.departmentit}}</td>
+                            <td>
+                                <h5>
+                                    <span [ngClass]="
+                                {
+                                    'badge':true,
+                                    'badge-pill':true,
+                                    'badge-success':employee.status.toLowerCase()=='active',
+                                    'badge-warning':employee.status.toLowerCase()=='inactive',
+                                    'badge-danger':employee.status.toLowerCase()=='suspended'
+                                }">
+                                        {{employee.status}}
+                                    </span>
+                                </h5>
+                            </td>
+                            <!-- <td>{{employee.createddtm| date :'short'}}</td> -->
+                            <td>{{employee.createdby}}</td>
+                            <!-- <td>{{employee.updateddtm| date :'short'}}</td> -->
+                            <td>{{employee.updatedby}}</td>
+                            <td>{{employee.country.cname}}</td>
+
+                        </tr>
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
