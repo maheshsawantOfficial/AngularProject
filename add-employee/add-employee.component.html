@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <app-header></app-header>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div id="div1" class="form-group" style="margin-left: 15%; max-height: inherit;">
+
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input #name id="name" type="text" placeholder="Enter the name..." class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Id</label>
+                    <input #email id="email" type="email" placeholder="Enter the email id..." class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone No.</label>
+                    <input #phone id="phone" type="text" placeholder="Enter the Phone No..." class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input #address id="address" type="text" placeholder="Enter the address..." class="form-control">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="dept">Department</label>
+                    <input #dept id="dept" type="text" placeholder="Enter the Department..." class="form-control">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <input #status id="status" type="text" placeholder="Enter the Status..." class="form-control">
+                </div>
+
+
+                <!-- <div class="form-group">
+                            <label for="createdby">Created By :</label>
+                        <input #createdby id="createdby" type="text" placeholder="Enter the Created By..." class="form-control"> 
+                    </div> -->
+
+                <!-- <div class="form-group">
+                            <label for="updatedby">Updated By :</label>
+                        <input #updatedby id="updatedby" type="text" placeholder="Enter the Updated By..." class="form-control"> 
+                    </div> -->
+
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input #countryid list="countrylist" id="country" class="form-control"
+                        placeholder="Select the country...">
+                    <div id="counrylist">
+                        <datalist #country id="countrylist" name="countrylist" placeholder="Select Country">
+                            <option value="{{country.cid}}" *ngFor="let country of countryPost">
+                                {{country.cname}}</option>
+                        </datalist>
+                    </div>
+                </div>
+
+
+                <br>
+                <button class="btn btn-success" (click)="addEmployee(name,email,phone,address,dept,status,countryid)">
+                    ADD EMPLOYEE
+                </button>
+                <button (click)="backToHome()" class="btn btn-danger">CANCEL/BACK</button>
+
+
+            </div>
+            <br>
+
+        </div>
+    </div>
+</div>

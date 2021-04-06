@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <app-header></app-header>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+
+      <div class="d-flex justify-content-center ">
+        <div class="card text-white bg-info mb-3" style="width: fit-content;height:fit-content;margin-top: 2%;">
+          <div class="card-header ">
+            <h5 class="card-title">{{employee.name}}</h5>
+          </div>
+
+
+          <ul class="list-group list-group-flush text-secondary" style="border-image-outset: 5px;">
+            <li class="list-group-item"><span><b>ID</b></span> : <i>{{employee.id}}</i></li>
+            <li class="list-group-item"><span><b>PhoneNo.</b></span> : <i>{{employee.phoneno}}</i></li>
+            <li class="list-group-item"><span><b>Email</b></span> : <i>{{employee.email}}</i></li>
+            <li class="list-group-item"><span><b>Address</b></span> : <i>{{employee.address}}</i></li>
+            <li class="list-group-item"><span><b>Department</b></span> : <i>{{employee.departmentit}}</i></li>
+            <li class="list-group-item"><span><b>Status</b></span> : <span style="padding: 10px;" [ngClass]="
+                            {
+                                'badge':true,
+                                'badge-pill':true,
+                                'badge-success':employee.status.toLowerCase()=='active',
+                                'badge-warning':employee.status.toLowerCase()=='inactive',
+                                'badge-danger':employee.status.toLowerCase()=='suspended'
+                            }">
+                <i>{{employee.status}}</i>
+              </span></li>
+            <li class="list-group-item"><span><b>Country</b></span> : <i>{{employee.country.cname}}</i></li>
+            <li class="list-group-item"><span><b>CreatedBy</b></span> : <i>{{employee.createdby}} (on
+                {{employee.createddtm|date:'short'}})</i></li>
+            <!-- <li class="list-group-item"></li> -->
+            <li class="list-group-item"><span><b>UpdatedBy</b></span> : <i>{{employee.updatedby}} (on
+                {{employee.updateddtm |date:'short'}})</i></li>
+          </ul>
+
+          <div class="card-footer" style="text-align: center;">
+            <a routerLink="/home" class="btn btn-dark btn-sm">Go Back</a>
+            <a (click)="onClickUpdate(popUp)" class="btn btn-warning btn-sm">Update</a>
+
+
+            <ng-template #popUp>
+              <app-update-employee [empObject]="employee"></app-update-employee>
+              <a (click)="closePopup()" class="btn btn-danger btn-md text-white"
+                style="margin-left: 15px;margin-bottom: 5px;">Close</a>
+            </ng-template>
+
+
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

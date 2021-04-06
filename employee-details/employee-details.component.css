@@ -1,0 +1,15 @@
+a {
+    margin-right: 15px;
+    width: 100px;
+}
+
+span {
+    width: 30%;
+}
+
+button {
+    width: 20%;
+    min-width: fit-content;
+    padding: 10px;
+    margin: 10px;
+}
